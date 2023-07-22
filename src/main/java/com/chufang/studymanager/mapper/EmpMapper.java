@@ -18,4 +18,6 @@ public interface EmpMapper {
 
 //    @Select("select * from emp")
     public List<Emp> page(String name, Short gender, LocalDate begin, LocalDate end);
+
+     void delete(List<Integer> ids);
 }

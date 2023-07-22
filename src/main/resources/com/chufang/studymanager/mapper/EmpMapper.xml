@@ -2,7 +2,14 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.chufang.studymanager.mapper.EmpMapper">
-<!--    动态分页查询 -->
+    <!--    删除员工根据 (1, 2, 3)-->
+    <delete id="delete">
+        delete from emp where id in
+        <foreach collection="ids" separator="," item="id" open="(" close=")">
+            #{id}
+        </foreach>
+    </delete>
+    <!--    动态分页查询 -->
     <select id="page" resultType="com.chufang.studymanager.bean.Emp">
         select * from emp
             <where>
