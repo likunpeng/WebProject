@@ -1,5 +1,6 @@
 package com.chufang.studymanager.controller;
 
+import com.chufang.studymanager.bean.Emp;
 import com.chufang.studymanager.bean.PageBean;
 import com.chufang.studymanager.bean.Result;
 import com.chufang.studymanager.service.EmpService;
@@ -39,6 +40,12 @@ public class EmpController {
     public Result delete(@PathVariable List<Integer> ids) {
          log.info("批量删除 {}", ids);
          empService.delete(ids);
+        return Result.success();
+    }
+    @PostMapping
+    public Result save(@RequestBody Emp emp) {
+        log.info("新增员工：{}", emp);
+        empService.save(emp);
         return Result.success();
     }
 

@@ -1,5 +1,6 @@
 package com.chufang.studymanager.service;
 
+import com.chufang.studymanager.bean.Emp;
 import com.chufang.studymanager.bean.PageBean;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -15,4 +16,6 @@ public interface EmpService {
                   LocalDate end);
 
     void delete(List<Integer> ids);
+
+    void save(Emp emp);
 }
