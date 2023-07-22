@@ -9,6 +9,7 @@ import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 @Service
 public class EmpServiceImpl implements EmpService {
@@ -25,11 +26,25 @@ public class EmpServiceImpl implements EmpService {
 //    }
 
 
+//    @Override
+//    public PageBean page(Integer page, Integer pageSize) {
+//        PageHelper.startPage(page, pageSize);
+//
+//        List<Emp> empList = empMapper.page();
+//
+//        Page<Emp> p = (Page<Emp>) empList;
+//
+//        PageBean pageBean = new PageBean(p.getTotal(), p.getResult());
+//
+//        return pageBean;
+//    }
+
     @Override
-    public PageBean page(Integer page, Integer pageSize) {
+    public PageBean page(Integer page, Integer pageSize, String name, Short gender, LocalDate begin, LocalDate end) {
+
         PageHelper.startPage(page, pageSize);
 
-        List<Emp> empList = empMapper.page();
+        List<Emp> empList = empMapper.page(name, gender, begin, end);
 
         Page<Emp> p = (Page<Emp>) empList;
 
