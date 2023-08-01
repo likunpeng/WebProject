@@ -65,4 +65,9 @@ public class EmpServiceImpl implements EmpService {
         emp.setUpdateTime(LocalDateTime.now());
         empMapper.insert(emp);
     }
+
+    @Override
+    public Emp login(Emp emp) {
+        return empMapper.getEmpByUserNameAndPassword(emp);
+    }
 }
